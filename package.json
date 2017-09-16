@@ -1,0 +1,43 @@
+{
+  "name": "bls-lib",
+  "version": "0.0.0",
+  "description": "this libary provides primitives for creating and verify BLS threshold signatures",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "istanbul cover ./tests/index.js",
+    "coveralls": "npm run coverage && coveralls <coverage/lcov.info",
+    "lint": "standard",
+    "test": "node ./tests/index.js",
+    "build:docs": "documentation build --github  -f md ./index.js > ./docs/index.md"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "mjbecze <mjbecze@gmail.com>",
+  "license": "MPL-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "array-shuffle": "^1.0.1",
+    "coveralls": "^2.11.4",
+    "documentation": "^5.2.0",
+    "istanbul": "^0.4.1",
+    "standard": "^10.0.0",
+    "tape": "^4.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wanderer/genericmodule.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wanderer/genericmodule/issues"
+  },
+  "homepage": "https://github.com/wanderer/genericmodule",
+  "standard": {
+    "ignore": [
+      "/mcl/",
+      "/build/",
+      "pre.js",
+      "/bls/"
+    ]
+  }
+}

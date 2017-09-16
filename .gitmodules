@@ -1,0 +1,9 @@
+[submodule "bls"]
+	path = bls
+	url = https://github.com/herumi/bls
+[submodule "cybozulib"]
+	path = cybozulib
+	url = https://github.com/herumi/cybozulib
+[submodule "mcl"]
+	path = mcl
+	url = https://github.com/herumi/mcl

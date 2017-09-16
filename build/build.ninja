@@ -1,0 +1,8 @@
+cflags = -I../mcl/include/ -I../cybozulib/include -I../bls/include -I../bls
+
+EXPORTED_BLS= "'_blsInit', '_blsIdSerialize' ,'_blsSecretKeySerialize' ,'_blsPublicKeySerialize' ,'_blsSignatureSerialize' ,'_blsIdDeserialize' ,'_blsSecretKeyDeserialize' ,'_blsPublicKeyDeserialize' ,'_blsSignatureDeserialize' ,'_blsIdIsEqual' ,'_blsSecretKeyIsEqual' ,'_blsPublicKeyIsEqual' ,'_blsSignatureIsEqual' ,'_blsSecretKeySetByCSPRNG' ,'_blsGetPublicKey', '_blsSecretKeyShare' ,'_blsPublicKeyShare' ,'_blsSecretKeyRecover' ,'_blsPublicKeyRecover' ,'_blsSignatureRecover' ,'_blsSign' ,'_blsVerify'"
+
+rule buildExLib
+  command = emcc -O3 -o $out ../bls/src/bls_c.cpp ../mcl/src/fp.cpp -s EXPORTED_FUNCTIONS=[$EXPORTED_BLS] --pre-js ../pre.js $cflags -s WASM=1 -DNDEBUG -DMCLBN_FP_UNIT_SIZE=6 -DMCL_MAX_BIT_SIZE=384 -DDISABLE_EXCEPTION_CATCHING=1
+
+build bls_lib.js : buildExLib

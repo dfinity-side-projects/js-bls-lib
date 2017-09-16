@@ -1,0 +1,79 @@
+[{
+  "name": "blsInit",
+  "exportName": "_init",
+  "returns": "number",
+  "args": ["number", "number"]
+}, {
+  "name": "blsSecretKeySetByCSPRNG",
+  "exportName": "secretKeySetByCSPRNG",
+  "returns": "number",
+  "args": ["number"]
+}, {
+  "name": "blsSign",
+  "exportName": "_sign",
+  "args": ["number", "number", "number", "number"]
+}, {
+  "name": "blsVerify",
+  "exportName": "_verify",
+  "returns": "number",
+  "args": ["number", "number", "number", "number"]
+}, {
+  "name": "blsGetPublicKey",
+  "exportName": "getPublicKey",
+  "args": ["number", "number"]
+}, {
+  "name": "blsPublicKeySerialize",
+  "exportName": "_publicKeySerialize",
+  "returns": "number",
+  "args": ["number", "number", "number"]
+}, {
+  "name": "blsSecretKeySerialize",
+  "exportName": "_secretKeySerialize",
+  "returns": "number",
+  "args": ["number", "number", "number"]
+}, {
+  "name": "blsSignatureSerialize",
+  "exportName": "_signatureSerialize",
+  "returns": "number",
+  "args": ["number", "number", "number"]
+}, {
+  "name": "blsSecretKeyDeserialize",
+  "exportName": "_secretKeyDeserialize",
+  "returns": "number",
+  "args": ["number", "number", "number"]
+}, {
+  "name": "blsPublicKeyDeserialize",
+  "exportName": "_publicKeyDeserialize",
+  "returns": "number",
+  "args": ["number", "number", "number"]
+}, {
+  "name": "blsSignatureDeserialize",
+  "exportName": "_signatureDeserialize",
+  "returns": "number",
+  "args": ["number", "number", "number"]
+}, {
+  "name": "blsSecretKeyShare",
+  "exportName": "_secretKeyShare",
+  "returns": "number",
+  "args": ["number", "number", "number", "number"]
+}, {
+  "name": "blsPublicKeyShare",
+  "exportName": "_publicKeyShare",
+  "returns": "number",
+  "args": ["number", "number", "number", "number"]
+}, {
+  "name": "blsSecretKeyRecover",
+  "exportName": "_secretKeyRecover",
+  "returns": "number",
+  "args": ["number", "number", "number", "number"]
+}, {
+  "name": "blsPublicKeyRecover",
+  "exportName": "_publicKeyRecover",
+  "returns": "number",
+  "args": ["number", "number", "number", "number"]
+}, {
+  "name": "blsSignatureRecover",
+  "exportName": "_signatureRecover",
+  "returns": "number",
+  "args": ["number", "number", "number", "number"]
+}]
