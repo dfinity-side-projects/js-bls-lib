@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:wanderer/genericmodule.git"
+    "url": "git@github.com:wanderer/bls-lib.git"
   },
   "bugs": {
-    "url": "https://github.com/wanderer/genericmodule/issues"
+    "url": "https://github.com/wanderer/bls-lib/issues"
   },
-  "homepage": "https://github.com/wanderer/genericmodule",
+  "homepage": "https://github.com/wanderer/bls-lib",
   "standard": {
     "ignore": [
       "/mcl/",
