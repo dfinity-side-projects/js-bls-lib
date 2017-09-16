@@ -10,4 +10,5 @@ matrix:
     - os: linux
       node_js: "8"
       env: TEST_SUITE=lint
+      
 script: npm run $TEST_SUITE
