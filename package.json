@@ -15,7 +15,9 @@
   ],
   "author": "mjbecze <mjbecze@gmail.com>",
   "license": "MPL-2.0",
-  "dependencies": {},
+  "dependencies": {
+    "defined": "^1.0.0"
+  },
   "devDependencies": {
     "array-shuffle": "^1.0.1",
     "coveralls": "^2.11.4",

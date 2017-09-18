@@ -186,14 +186,14 @@ mod.onRuntimeInitialized = function () {
 function wrapInput (func, returnValue = false) {
   return function () {
     const args = [...arguments]
-    const buf = args.pop()
+    let buf = args.pop()
     const ioMode = 0
     const pos = mod._malloc(buf.length)
     if (typeof buf === 'string') {
-      mod.writeStringToMemory(buf, pos)
-    } else {
-      mod.HEAP8.set(buf, pos)
+      buf = Buffer.from(buf)
     }
+
+    mod.HEAP8.set(buf, pos)
     let r = func(...args, pos, buf.length, ioMode)
     mod._free(pos)
     if (returnValue) return r
