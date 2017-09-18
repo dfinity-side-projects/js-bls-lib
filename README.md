@@ -41,7 +41,7 @@ bls.onModuleInit(() => {
 
 # BUILDING
 
-First install the dependancies [emcripten](https://github.com/kripken/emscripten) and [ninja](ninja-build.org)
+First install the dependancies [emscripten](https://github.com/kripken/emscripten) and [ninja](ninja-build.org)
 
 ```
  git clone --recursive https://github.com/wanderer/bls-lib.git 
