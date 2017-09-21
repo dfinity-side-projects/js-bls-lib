@@ -76,4 +76,9 @@
   "exportName": "_signatureRecover",
   "returns": "number",
   "args": ["number", "number", "number", "number"]
+}, {
+  "name": "blsIdSetInt",
+  "exportName": "idSetInt",
+  "returns": "number",
+  "args": ["number", "number"]
 }]

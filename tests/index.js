@@ -17,7 +17,7 @@ bls.onModuleInit(() => {
     const sig = bls.signature()
 
     bls.secretKeySetByCSPRNG(sec)
-    const msg = 'hello world'
+    const msg = Buffer.from('hello world')
     bls.sign(sig, sec, msg)
 
     bls.getPublicKey(pub, sec)
