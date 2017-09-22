@@ -81,4 +81,9 @@
   "exportName": "idSetInt",
   "returns": "number",
   "args": ["number", "number"]
+}, {
+  "name": "blsHashToSecretKey",
+  "exportName": "_hashToSecretKey",
+  "returns": "number",
+  "args": ["number", "number", "number"]
 }]

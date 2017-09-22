@@ -1,6 +1,8 @@
 const mod = require('./build/bls_lib.js')
 const exportedFuncs = require('./exportedFuncs.json')
 
+exports.mod = mod
+
 let init = false
 let initCb = () => {}
 
@@ -119,6 +121,8 @@ mod.onRuntimeInitialized = function () {
    */
   exports.signatureSerialize = wrapOutput(exports._signatureSerialize, 32)
 
+  exports.hashToSecretKey = wrapInput(exports._hashToSecretKey, true)
+
   /**
    * write a secretKey to memory
    * @param {number} sk - a pointer to a secret key
@@ -138,7 +142,7 @@ mod.onRuntimeInitialized = function () {
    * @param {number} sig - a pointer to a signature
    * @param {TypedArray} array - the signature as a 32 byte TypedArray
    */
-  exports.signatureDeserialize = wrapInput(exports._signatureDeserialize, true)
+  exports.signatureDeserialize = wrapInput(exports._signatureDeserialize)
 
   /**
    * Recovers a secret key for a group given the groups secret keys shares and the groups ids
@@ -183,27 +187,26 @@ mod.onRuntimeInitialized = function () {
   initCb()
 }
 
-function wrapInput (func, returnValue = false) {
+function wrapInput (func) {
   return function () {
     const args = [...arguments]
     let buf = args.pop()
-    const ioMode = 0
-    const pos = mod._malloc(buf.length)
     if (typeof buf === 'string') {
       buf = Buffer.from(buf)
     }
+    const pos = mod._malloc(buf.length)
 
     mod.HEAP8.set(buf, pos)
-    let r = func(...args, pos, buf.length, ioMode)
+    let r = func(...args, pos, buf.length)
     mod._free(pos)
-    if (returnValue) return r
+    return r
   }
 }
 
 function wrapOutput (func, size) {
-  return function (x, ioMode = 0) {
+  return function (x) {
     const pos = mod._malloc(size)
-    const n = func(pos, size, x, ioMode)
+    const n = func(pos, size, x)
     const a = mod.HEAP8.slice(pos, pos + n)
     mod._free(pos)
     return a
