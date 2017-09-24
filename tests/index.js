@@ -4,9 +4,27 @@ const bls = require('../index.js')
 
 bls.onModuleInit(() => {
   tape('basic', t => {
-    t.plan(1)
+    t.plan(2)
     bls.onModuleInit(() => {
       t.pass(true)
+      bls.init()
+      const sec = bls.secretKey()
+      const pub = bls.publicKey()
+      const sig = bls.signature()
+
+      const secString = '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08'
+      const secArray = Buffer.from(secString, 'hex')
+      bls.secretKeyDeserialize(sec, secArray)
+
+      const pubString = '7ca19ff032c22a00b3d79d8961495af4c6c93c9c2b62bd7279570fcc2ca8d120fc75fd16f55ded79f6392a0769496817cded4760ed658d62627b9e6852b1100d'
+
+      bls.publicKeyDeserialize(pub, Buffer.from(pubString, 'hex'))
+
+      const msg = 'test'
+      bls.sign(sig, sec, msg)
+
+      const v = bls.verify(sig, pub, msg)
+      t.equals(v, 1)
     })
   })
 
