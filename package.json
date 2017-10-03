@@ -4,8 +4,8 @@
   "description": "this libary provides primitives for creating and verify BLS threshold signatures",
   "main": "index.js",
   "scripts": {
-    "coverage": "istanbul cover ./tests/index.js",
-    "coveralls": "npm run coverage && coveralls <coverage/lcov.info",
+    "coveralls": "npm run coverage && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc npm test",
     "lint": "standard",
     "test": "node ./tests/index.js",
     "build:docs": "documentation build --github  -f md ./index.js > ./docs/index.md"
@@ -15,14 +15,11 @@
   ],
   "author": "mjbecze <mjbecze@gmail.com>",
   "license": "MPL-2.0",
-  "dependencies": {
-    "defined": "^1.0.0"
-  },
   "devDependencies": {
     "array-shuffle": "^1.0.1",
-    "coveralls": "^2.11.4",
     "documentation": "^5.2.0",
     "istanbul": "^0.4.1",
+    "nyc": "^11.2.1",
     "standard": "^10.0.0",
     "tape": "^4.0.3"
   },

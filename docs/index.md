@@ -11,11 +11,13 @@
 -   [publicKey](#publickey)
 -   [signature](#signature)
 -   [free](#free)
+-   [idSetInt](#idsetint)
 -   [sign](#sign)
 -   [verify](#verify)
 -   [publicKeySerialize](#publickeyserialize)
 -   [secretKeySerialize](#secretkeyserialize)
 -   [signatureSerialize](#signatureserialize)
+-   [hashToSecretKey](#hashtosecretkey)
 -   [secretKeyDeserialize](#secretkeydeserialize)
 -   [publicKeyDeserialize](#publickeydeserialize)
 -   [signatureDeserialize](#signaturedeserialize)
@@ -27,6 +29,8 @@
 
 ## onModuleInit
 
+[index.js:13-20](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L13-L20 "Source code on GitHub")
+
 takes a callback that is called once the module is setup
 
 **Parameters**
@@ -35,17 +39,25 @@ takes a callback that is called once the module is setup
 
 ## MCLBN_CURVE_FP254BNB
 
+[index.js:25-25](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L25-L25 "Source code on GitHub")
+
 the FP254BNB curve
 
 ## MCLBN_CURVE_FP382_1
+
+[index.js:30-30](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L30-L30 "Source code on GitHub")
 
 the FP382_1 curve
 
 ## MCLBN_CURVE_FP382_2
 
+[index.js:35-35](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L35-L35 "Source code on GitHub")
+
 the FP382_2 curve
 
 ## init
+
+[index.js:52-54](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L52-L54 "Source code on GitHub")
 
 intailizes the libary to use a given curve
 
@@ -55,11 +67,15 @@ intailizes the libary to use a given curve
 
 ## secretKey
 
+[index.js:60-62](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L60-L62 "Source code on GitHub")
+
 allocates a secret key
 
 Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** the pointer to the key
 
 ## publicKey
+
+[index.js:68-70](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L68-L70 "Source code on GitHub")
 
 allocates a secret key
 
@@ -67,11 +83,15 @@ Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 ## signature
 
+[index.js:76-78](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L76-L78 "Source code on GitHub")
+
 allocates a signature
 
 Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** the pointer to the signture
 
 ## free
+
+[index.js:83-85](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L83-L85 "Source code on GitHub")
 
 frees a pointer
 
@@ -79,7 +99,20 @@ frees a pointer
 
 -   `x`  
 
+## idSetInt
+
+[index.js:92-97](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L92-L97 "Source code on GitHub")
+
+creates an ID to use in with threshold groups
+
+**Parameters**
+
+-   `sk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key, secret key stuct is used to hold the id
+-   `n` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a int repsenting the ID. n cannot be zero.
+
 ## sign
+
+[index.js:105-105](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L105-L105 "Source code on GitHub")
 
 signs a message
 
@@ -91,6 +124,8 @@ signs a message
 
 ## verify
 
+[index.js:113-113](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L113-L113 "Source code on GitHub")
+
 verifies a signature
 
 **Parameters**
@@ -100,6 +135,8 @@ verifies a signature
 -   `msg` **([TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) \| [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** the message that was signed
 
 ## publicKeySerialize
+
+[index.js:120-120](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L120-L120 "Source code on GitHub")
 
 given a pointer to a public key this returns 64 byte Int8Array containing the key
 
@@ -111,6 +148,8 @@ Returns **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/R
 
 ## secretKeySerialize
 
+[index.js:127-127](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L127-L127 "Source code on GitHub")
+
 given a pointer to a secret key this returns 32 byte Int8Array containing the key
 
 **Parameters**
@@ -121,6 +160,8 @@ Returns **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/R
 
 ## signatureSerialize
 
+[index.js:134-134](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L134-L134 "Source code on GitHub")
+
 given a pointer to a signature this returns 32 byte Int8Array containing the signature
 
 **Parameters**
@@ -129,7 +170,20 @@ given a pointer to a signature this returns 32 byte Int8Array containing the sig
 
 Returns **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** 
 
+## hashToSecretKey
+
+[index.js:141-141](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L141-L141 "Source code on GitHub")
+
+generates a secret key given a seed phrase.
+
+**Parameters**
+
+-   `sk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
+-   `seed` **([String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray))** the seed phrase
+
 ## secretKeyDeserialize
+
+[index.js:148-148](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L148-L148 "Source code on GitHub")
 
 write a secretKey to memory
 
@@ -140,6 +194,8 @@ write a secretKey to memory
 
 ## publicKeyDeserialize
 
+[index.js:155-155](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L155-L155 "Source code on GitHub")
+
 write a publicKey to memory
 
 **Parameters**
@@ -149,6 +205,8 @@ write a publicKey to memory
 
 ## signatureDeserialize
 
+[index.js:162-162](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L162-L162 "Source code on GitHub")
+
 write a signature to memory
 
 **Parameters**
@@ -157,6 +215,8 @@ write a signature to memory
 -   `array` **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the signature as a 32 byte TypedArray
 
 ## secretKeyRecover
+
+[index.js:170-170](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L170-L170 "Source code on GitHub")
 
 Recovers a secret key for a group given the groups secret keys shares and the groups ids
 
@@ -168,6 +228,8 @@ Recovers a secret key for a group given the groups secret keys shares and the gr
 
 ## publicKeyRecover
 
+[index.js:178-178](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L178-L178 "Source code on GitHub")
+
 Recovers a public key for a group given the groups public keys shares and the groups ids
 
 **Parameters**
@@ -177,6 +239,8 @@ Recovers a public key for a group given the groups public keys shares and the gr
 -   `idArrah` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;numbers>** an array of pointers to ids in the groups. The length of the array should be the threshold number for the group
 
 ## signatureRecover
+
+[index.js:186-186](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L186-L186 "Source code on GitHub")
 
 Recovers a signature for a group given the groups public keys shares and the groups ids
 
@@ -188,6 +252,8 @@ Recovers a signature for a group given the groups public keys shares and the gro
 
 ## secretKeyShare
 
+[index.js:194-194](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L194-L194 "Source code on GitHub")
+
 Creates a secket key share for a group member given the groups members id (which is a the secret key) and array of master secret keys
 
 **Parameters**
@@ -197,6 +263,8 @@ Creates a secket key share for a group member given the groups members id (which
 -   `id` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** the id of the member
 
 ## publicKeyShare
+
+[index.js:202-202](https://github.com/wanderer/bls-lib/blob/29702674041ace08d16a5600105230669f208404/index.js#L202-L202 "Source code on GitHub")
 
 Creates a public key share for a group member given the groups members id (which is a the secret key) and array of master public keys
 

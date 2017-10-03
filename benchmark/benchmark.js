@@ -1,4 +1,5 @@
 const bls = require('../')
+const nacl = require('tweetnacl')
 
 bls.onModuleInit(() => {
   bls.init()
@@ -10,18 +11,29 @@ bls.onModuleInit(() => {
   bls.secretKeySetByCSPRNG(sec)
   bls.getPublicKey(pub, sec)
 
-  const start = new Date()
+  let start = new Date()
   const msg = Buffer.from('hello world')
   bls.sign(sig, sec, msg)
 
   const v = bls.verify(sig, pub, msg)
 
-  const end = new Date()
-  const time = end.getTime() - start.getTime()
+  let end = new Date()
+  let time = end.getTime() - start.getTime()
   console.log('finished in', time, 'ms')
   console.log(v)
 
   bls.free(sec)
   bls.free(sig)
   bls.free(pub)
+
+  const keyPair = nacl.sign.keyPair()
+
+  start = new Date()
+  const signedMsg = nacl.sign(msg, keyPair.secretKey)
+  const rmsg = nacl.sign.open(signedMsg, keyPair.publicKey)
+
+  end = new Date()
+  time = end.getTime() - start.getTime()
+  console.log('finished in', time, 'ms')
+  console.log(Buffer.from(rmsg).toString())
 })

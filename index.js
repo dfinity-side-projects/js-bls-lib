@@ -85,6 +85,18 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
+   * creates an ID to use in with threshold groups
+   * @param {number} sk - a pointer to the secret key, secret key stuct is used to hold the id
+   * @param {number} n - a int repsenting the ID. n cannot be zero.
+   */
+  exports.idSetInt = function (sk, n) {
+    if (n === 0) {
+      throw new Error('id cannot be zero')
+    }
+    exports._idSetInt(sk, n)
+  }
+
+  /**
    * signs a message
    * @param {number} sig - a pointer to the a signature
    * @param {number} sk - a pointer to the secret key
@@ -121,6 +133,11 @@ mod.onRuntimeInitialized = function () {
    */
   exports.signatureSerialize = wrapOutput(exports._signatureSerialize, 32)
 
+  /**
+   * generates a secret key given a seed phrase.
+   * @param {number} sk - a pointer to a secret key
+   * @param {String|TypedArray} seed - the seed phrase
+   */
   exports.hashToSecretKey = wrapInput(exports._hashToSecretKey, true)
 
   /**
