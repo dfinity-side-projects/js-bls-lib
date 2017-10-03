@@ -11,7 +11,9 @@
     "build:docs": "documentation build --github  -f md ./index.js > ./docs/index.md"
   },
   "keywords": [
-    ""
+    "bls",
+    "wasm",
+    "crypto"
   ],
   "author": "mjbecze <mjbecze@gmail.com>",
   "license": "MPL-2.0",
