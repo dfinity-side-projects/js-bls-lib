@@ -12,6 +12,5 @@ matrix:
       env: TEST_SUITE=lint
     - os: linux
       node_js: "8"
-      env: TEST_SUITE=test
-      
+      env: TEST_SUITE=coveralls   
 script: npm run $TEST_SUITE
