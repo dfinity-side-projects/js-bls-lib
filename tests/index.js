@@ -205,4 +205,23 @@ bls.onModuleInit(() => {
 
     t.end()
   })
+
+  tape('int ids', t => {
+    bls.init()
+    t.plan(2)
+    const sec = bls.secretKey()
+    bls.idSetInt(sec, 7)
+
+    const secKey = bls.secretKeySerialize(sec)
+    const expected = new Uint8Array(32)
+    expected[0] = 7
+    t.deepEqual(secKey, expected)
+
+    try {
+      bls.idSetInt(sec, 0)
+    } catch (e) {
+      t.pass('shouldnt accept 0 as an id')
+    }
+    t.end()
+  })
 })

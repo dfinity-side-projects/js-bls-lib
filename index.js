@@ -4,7 +4,7 @@ const exportedFuncs = require('./exportedFuncs.json')
 exports.mod = mod
 
 let init = false
-let initCb = () => {}
+let initCb
 
 /**
  * takes a callback that is called once the module is setup

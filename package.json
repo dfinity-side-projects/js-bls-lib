@@ -40,5 +40,10 @@
       "pre.js",
       "/bls/"
     ]
+  },
+ "nyc": {
+    "exclude": [
+      "build"
+    ]
   }
 }
