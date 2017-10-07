@@ -1,5 +1,6 @@
 const bls = require('../')
 
+// Diffie–Hellman key exchange
 bls.onModuleInit(() => {
   bls.init()
 
@@ -12,12 +13,14 @@ bls.onModuleInit(() => {
   bls.getPublicKey(pk1, sk1)
   bls.getPublicKey(pk2, sk2)
 
-  const out1 = bls.publicKey()
-  const out2 = bls.publicKey()
+  const sharedSec1 = bls.publicKey()
+  const sharedSec2 = bls.publicKey()
 
-  bls.dhKeyExchange(out1, sk1, pk2)
-  bls.dhKeyExchange(out2, sk2, pk1)
+  bls.dhKeyExchange(sharedSec1, sk1, pk2)
+  bls.dhKeyExchange(sharedSec2, sk2, pk1)
 
-  const r = bls.publicKeyIsEqual(out1, out2)
+  const r = bls.publicKeyIsEqual(sharedSec1, sharedSec2)
   console.log(r)
+
+  bls.freeArray([sk1, sk2, pk1, pk2, sharedSec2, sharedSec1])
 })
