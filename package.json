@@ -1,6 +1,6 @@
 {
   "name": "bls-lib",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "this libary provides primitives for creating and verify BLS threshold signatures",
   "main": "index.js",
   "scripts": {
