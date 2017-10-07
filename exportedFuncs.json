@@ -112,4 +112,8 @@
   "exportName": "signatureIsEqual",
   "returns": "number",
   "args": ["number", "number"]
+}, {
+  "name": "blsDHKeyExchange",
+  "exportName": "dhKeyExchange",
+  "args": ["number", "number", "number"]
 }]
