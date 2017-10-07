@@ -85,6 +85,13 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
+   * frees an array of pointers
+   */
+  exports.freeArray = function (a) {
+    a.forEach(el => mod._free(el))
+  }
+
+  /**
    * creates an ID to use in with threshold groups
    * @param {number} sk - a pointer to the secret key, secret key stuct is used to hold the id
    * @param {number} n - a int repsenting the ID. n cannot be zero.
@@ -117,21 +124,21 @@ mod.onRuntimeInitialized = function () {
    * @param {number} pk - a pointer to the secret key
    * @return {TypedArray}
    */
-  exports.publicKeySerialize = wrapOutput(exports._publicKeySerialize, 64)
+  exports.publicKeyExport = wrapOutput(exports._publicKeySerialize, 64)
 
   /**
    * given a pointer to a secret key this returns 32 byte Int8Array containing the key
    * @param {number} pk - a pointer to the secret key
    * @return {TypedArray}
    */
-  exports.secretKeySerialize = wrapOutput(exports._secretKeySerialize, 32)
+  exports.secretKeyExport = wrapOutput(exports._secretKeySerialize, 32)
 
   /**
    * given a pointer to a signature this returns 32 byte Int8Array containing the signature
    * @param {number} pk - a pointer to the secret key
    * @return {TypedArray}
    */
-  exports.signatureSerialize = wrapOutput(exports._signatureSerialize, 32)
+  exports.signatureExport = wrapOutput(exports._signatureSerialize, 32)
 
   /**
    * generates a secret key given a seed phrase.
@@ -148,11 +155,34 @@ mod.onRuntimeInitialized = function () {
   exports.secretKeyDeserialize = wrapInput(exports._secretKeyDeserialize, true)
 
   /**
-   * write a publicKey to memory
+   * write a secretKey to memory and returns a pointer to it
    * @param {number} sk - a pointer to a secret key
+   * @param {TypedArray} array - the secret key as a 32 byte TypedArray
+   * @return {Number}
+   */
+  exports.secretKeyImport = function (buf) {
+    const sk = exports.secretKey()
+    exports.secretKeyDeserialize(sk, buf)
+    return sk
+  }
+
+  /**
+   * write a publicKey to memory
+   * @param {number} sk - a pointer to a public key
    * @param {TypedArray} array - the secret key as a 64 byte TypedArray
    */
   exports.publicKeyDeserialize = wrapInput(exports._publicKeyDeserialize, true)
+
+  /**
+   * write a publicKey to memory and returns a pointer to it
+   * @param {TypedArray} array - the secret key as a 64 byte TypedArray
+   * @return {Number}
+   */
+  exports.publicKeyImport = function (buf) {
+    const pk = exports.publicKey()
+    exports.publicKeyDeserialize(pk, buf)
+    return pk
+  }
 
   /**
    * write a signature to memory
@@ -160,6 +190,17 @@ mod.onRuntimeInitialized = function () {
    * @param {TypedArray} array - the signature as a 32 byte TypedArray
    */
   exports.signatureDeserialize = wrapInput(exports._signatureDeserialize)
+
+  /**
+   * write a signature to memory and returns a pointer to it
+   * @param {TypedArray} array - the signature as a 32 byte TypedArray
+   * @return {Number}
+   */
+  exports.signatureImport = function (buf) {
+    const sig = exports.signature()
+    exports.signatureDeserialize(sig, buf)
+    return sig
+  }
 
   /**
    * Recovers a secret key for a group given the groups secret keys shares and the groups ids

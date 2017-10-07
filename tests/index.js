@@ -8,17 +8,15 @@ bls.onModuleInit(() => {
     bls.onModuleInit(() => {
       t.pass(true)
       bls.init()
-      const sec = bls.secretKey()
-      const pub = bls.publicKey()
       const sig = bls.signature()
 
       const secString = '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08'
       const secArray = Buffer.from(secString, 'hex')
-      bls.secretKeyDeserialize(sec, secArray)
+      const sec = bls.secretKeyImport(secArray)
 
       const pubString = '7ca19ff032c22a00b3d79d8961495af4c6c93c9c2b62bd7279570fcc2ca8d120fc75fd16f55ded79f6392a0769496817cded4760ed658d62627b9e6852b1100d'
 
-      bls.publicKeyDeserialize(pub, Buffer.from(pubString, 'hex'))
+      const pub = bls.publicKeyImport(Buffer.from(pubString, 'hex'))
 
       const msg = 'test'
       bls.sign(sig, sec, msg)
@@ -52,37 +50,33 @@ bls.onModuleInit(() => {
 
   tape('import/export', t => {
     bls.init()
-    const sec = bls.secretKey()
     let sig = bls.signature()
     let pub = bls.publicKey()
 
     const secString = 'a3d34923c039a45a50bfb6bc0943c77589a23cd27d7118c1bede0c61d6bab108'
     let secArray = Buffer.from(secString, 'hex')
-    bls.secretKeyDeserialize(sec, secArray)
+    const sec = bls.secretKeyImport(secArray)
 
-    secArray = bls.secretKeySerialize(sec)
+    secArray = bls.secretKeyExport(sec)
     t.equals(Buffer.from(secArray).toString('hex'), secString)
 
     bls.getPublicKey(pub, sec)
-    const pubArray = bls.publicKeySerialize(pub)
+    const pubArray = bls.publicKeyExport(pub)
 
-    secArray = bls.secretKeySerialize(sec)
+    secArray = bls.secretKeyExport(sec)
 
     const msg = 'hello world'
     bls.sign(sig, sec, msg)
 
-    const sigArray = bls.signatureSerialize(sig)
+    const sigArray = bls.signatureExport(sig)
 
     bls.free(sec)
     bls.free(sig)
     bls.free(pub)
 
     // recover
-    sig = bls.signature()
-    pub = bls.publicKey()
-
-    bls.signatureDeserialize(sig, sigArray)
-    bls.publicKeyDeserialize(pub, pubArray)
+    sig = bls.signatureImport(sigArray)
+    pub = bls.publicKeyImport(pubArray)
 
     const v = bls.verify(sig, pub, msg)
     t.equals(v, 1)
@@ -140,8 +134,8 @@ bls.onModuleInit(() => {
       const pk2 = bls.publicKey()
       bls.getPublicKey(pk2, sk)
 
-      const pubArray1 = bls.publicKeySerialize(pk)
-      const pubArray2 = bls.publicKeySerialize(pk2)
+      const pubArray1 = bls.publicKeyExport(pk)
+      const pubArray2 = bls.publicKeyExport(pk2)
       bls.free(pk2)
       t.equals(Buffer.from(pubArray2).toString('hex'), Buffer.from(pubArray1).toString('hex'), 'public keys should be equals')
 
@@ -178,30 +172,28 @@ bls.onModuleInit(() => {
     bls.publicKeyRecover(pk, subPubs, subIds)
     bls.signatureRecover(sig, subSigs, subIds)
 
-    const secArray = bls.secretKeySerialize(sk)
-    const masterSk = bls.secretKeySerialize(masterSecretKey[0])
+    const secArray = bls.secretKeyExport(sk)
+    const masterSk = bls.secretKeyExport(masterSecretKey[0])
 
     t.equals(Buffer.from(secArray).toString('hex'), Buffer.from(masterSk).toString('hex'), 'should recover master SK')
 
-    const publicKey = bls.publicKeySerialize(pk)
-    const masterPk = bls.publicKeySerialize(masterPublicKey[0])
+    const publicKey = bls.publicKeyExport(pk)
+    const masterPk = bls.publicKeyExport(masterPublicKey[0])
 
     t.equals(Buffer.from(publicKey).toString('hex'), Buffer.from(masterPk).toString('hex'), 'should recover master PK')
 
-    const signature = bls.signatureSerialize(sig)
-    const sMasterSig = bls.signatureSerialize(masterSig)
+    const signature = bls.signatureExport(sig)
+    const sMasterSig = bls.signatureExport(masterSig)
     t.equals(Buffer.from(signature).toString('hex'), Buffer.from(sMasterSig).toString('hex'), 'signature should be the same as master')
 
     bls.free(sig)
     bls.free(pk)
     bls.free(sk)
 
-    for (let i = 0; i < numOfPlayers; i++) {
-      bls.free(ids[i])
-      bls.free(secretKeys[i])
-      bls.free(publicKeys[i])
-      bls.free(sigs[i])
-    }
+    bls.freeArray(ids)
+    bls.freeArray(secretKeys)
+    bls.freeArray(publicKeys)
+    bls.freeArray(sigs)
 
     t.end()
   })
@@ -212,7 +204,7 @@ bls.onModuleInit(() => {
     const sec = bls.secretKey()
     bls.idSetInt(sec, 7)
 
-    const secKey = bls.secretKeySerialize(sec)
+    const secKey = bls.secretKeyExport(sec)
     const expected = new Uint8Array(32)
     expected[0] = 7
     t.deepEqual(secKey, expected)

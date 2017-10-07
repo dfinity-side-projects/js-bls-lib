@@ -85,4 +85,31 @@
   "exportName": "_hashToSecretKey",
   "returns": "number",
   "args": ["number", "number", "number"]
+}, {
+  "name": "blsPublicKeyAdd",
+  "exportName": "publicKeyAdd",
+  "args": ["number", "number"]
+}, {
+  "name": "blsSecretKeyAdd",
+  "exportName": "secretKeyAdd",
+  "args": ["number", "number"]
+},{
+  "name": "blsSignatureAdd",
+  "exportName": "signatureAdd",
+  "args": ["number", "number"]
+}, {
+  "name": "blsSecretKeyIsEqual",
+  "exportName": "secretKeyIsEqual",
+  "returns": "number",
+  "args": ["number", "number"]
+}, {
+  "name": "blsPublicKeyIsEqual",
+  "exportName": "publicKeyIsEqual",
+  "returns": "number",
+  "args": ["number", "number"]
+}, {
+  "name": "blsSignatureIsEqual",
+  "exportName": "signatureIsEqual",
+  "returns": "number",
+  "args": ["number", "number"]
 }]
