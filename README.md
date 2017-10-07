@@ -39,6 +39,9 @@ bls.onModuleInit(() => {
 })
 ```
 
+# EXAMPLES
+[./examples/](./examples/)
+
 # API
 [./docs/](./docs/index.md)
 
