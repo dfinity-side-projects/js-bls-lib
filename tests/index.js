@@ -201,8 +201,7 @@ bls.onModuleInit(() => {
   tape('int ids', t => {
     bls.init()
     t.plan(2)
-    const sec = bls.secretKey()
-    bls.idSetInt(sec, 7)
+    const sec = bls.idImportFromInt(7)
 
     const secKey = bls.secretKeyExport(sec)
     const expected = new Uint8Array(32)

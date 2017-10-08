@@ -1,10 +1,11 @@
+const nop = require('nop')
 const mod = require('./build/bls_lib.js')
 const exportedFuncs = require('./exportedFuncs.json')
 
 exports.mod = mod
 
 let init = false
-let initCb
+let initCb = nop
 
 /**
  * takes a callback that is called once the module is setup
@@ -92,7 +93,7 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
-   * creates an ID to use in with threshold groups
+   * creates an ID from an int to use in with threshold groups
    * @param {number} sk - a pointer to the secret key, secret key stuct is used to hold the id
    * @param {number} n - a int repsenting the ID. n cannot be zero.
    */
@@ -101,6 +102,17 @@ mod.onRuntimeInitialized = function () {
       throw new Error('id cannot be zero')
     }
     exports._idSetInt(sk, n)
+  }
+
+  /**
+   * creates an ID from an int and returns a pointer to it
+   * @param {number} n - a int repsenting the ID. n cannot be zero.
+   * @return {number}
+   */
+  exports.idImportFromInt = function (n) {
+    const sk = exports.secretKey()
+    exports.idSetInt(sk, n)
+    return sk
   }
 
   /**
