@@ -44,6 +44,10 @@ bls.onModuleInit(() => {
 # API
 [./docs/](./docs/index.md)
 
+# USES
+[verifible secret sharing](https://github.com/wanderer/vss)  
+[distributed key generation](https://github.com/wanderer/dkg)
+
 # BUILDING
 
 First install the dependancies [emscripten](https://github.com/kripken/emscripten) and [ninja](ninja-build.org)
