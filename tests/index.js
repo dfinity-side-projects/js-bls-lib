@@ -200,13 +200,16 @@ bls.onModuleInit(() => {
 
   tape('int ids', t => {
     bls.init()
-    t.plan(2)
-    const sec = bls.idImportFromInt(7)
+    t.plan(3)
+    const sec = bls.idImport(7)
+    const sec2 = bls.idImport(Buffer.from([7]))
 
     const secKey = bls.secretKeyExport(sec)
+    const secKey2 = bls.secretKeyExport(sec2)
     const expected = new Uint8Array(32)
     expected[0] = 7
     t.deepEqual(secKey, expected)
+    t.notEqual(secKey2, expected)
 
     try {
       bls.idSetInt(sec, 0)
