@@ -116,6 +116,21 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
+   * creates an ID from an int and returns a pointer to it
+   * @param {number} n - a int repsenting the ID. n cannot be zero.
+   * @return {number}
+   */
+  exports.idImport = function (n) {
+    if (Number.isInteger(n)) {
+      return exports.idImportFromInt(n)
+    } else {
+      const sk = exports.secretKey()
+      exports.hashToSecretKey(sk, n)
+      return sk
+    }
+  }
+
+  /**
    * signs a message
    * @param {number} sig - a pointer to the a signature
    * @param {number} sk - a pointer to the secret key
