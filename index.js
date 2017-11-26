@@ -1,6 +1,5 @@
 const nop = require('nop')
 const mod = require('./build/bls_lib.js')
-const exportedFuncs = require('./exportedFuncs.json')
 
 exports.mod = mod
 
@@ -42,16 +41,12 @@ const G1_SIZE = FR_SIZE * 3
 const G2_SIZE = FR_SIZE * 3 * 2
 
 mod.onRuntimeInitialized = function () {
-  exportedFuncs.forEach(func => {
-    exports[func.exportName] = mod.cwrap(func.name, func.returns, func.args)
-  })
-
   /**
    * intailizes the libary to use a given curve
    * @param {number} curve - the curves that can be used are MCLBN_CURVE_FP254BNB, MCLBN_CURVE_FP382_1 or MCLBN_CURVE_FP382_2
    */
   exports.init = function (curve = exports.MCLBN_CURVE_FP254BNB) {
-    return exports._init(curve, MCLBN_FP_UNIT_SIZE)
+    return mod._blsInit(curve, MCLBN_FP_UNIT_SIZE)
   }
 
   /**
@@ -101,7 +96,7 @@ mod.onRuntimeInitialized = function () {
     if (n === 0) {
       throw new Error('id cannot be zero')
     }
-    exports._idSetInt(sk, n)
+    mod._blsIdSetInt(sk, n)
   }
 
   /**
@@ -125,7 +120,7 @@ mod.onRuntimeInitialized = function () {
       return exports.idImportFromInt(n)
     } else {
       const sk = exports.secretKey()
-      exports.hashToSecretKey(sk, n)
+      mod._blsHashToSecretKey(sk, n)
       return sk
     }
   }
@@ -136,7 +131,7 @@ mod.onRuntimeInitialized = function () {
    * @param {number} sk - a pointer to the secret key
    * @param {TypedArray|String} msg - the message to sign
    */
-  exports.sign = wrapInput(exports._sign)
+  exports.sign = wrapInput(mod._blsSign)
 
   /**
    * verifies a signature
@@ -144,42 +139,42 @@ mod.onRuntimeInitialized = function () {
    * @param {number} pk - a pointer to the secret key
    * @param {TypedArray|String} msg - the message that was signed
    */
-  exports.verify = wrapInput(exports._verify, true)
+  exports.verify = wrapInput(mod._blsVerify, true)
 
   /**
    * given a pointer to a public key this returns 64 byte Int8Array containing the key
    * @param {number} pk - a pointer to the secret key
    * @return {TypedArray}
    */
-  exports.publicKeyExport = wrapOutput(exports._publicKeySerialize, 64)
+  exports.publicKeyExport = wrapOutput(mod._blsPublicKeySerialize, 64)
 
   /**
    * given a pointer to a secret key this returns 32 byte Int8Array containing the key
    * @param {number} pk - a pointer to the secret key
    * @return {TypedArray}
    */
-  exports.secretKeyExport = wrapOutput(exports._secretKeySerialize, 32)
+  exports.secretKeyExport = wrapOutput(mod._blsSecretKeySerialize, 32)
 
   /**
    * given a pointer to a signature this returns 32 byte Int8Array containing the signature
    * @param {number} pk - a pointer to the secret key
    * @return {TypedArray}
    */
-  exports.signatureExport = wrapOutput(exports._signatureSerialize, 32)
+  exports.signatureExport = wrapOutput(mod._blsSignatureSerialize, 32)
 
   /**
    * generates a secret key given a seed phrase.
    * @param {number} sk - a pointer to a secret key
    * @param {String|TypedArray} seed - the seed phrase
    */
-  exports.hashToSecretKey = wrapInput(exports._hashToSecretKey, true)
+  exports.hashToSecretKey = wrapInput(mod._blsHashToSecretKey, true)
 
   /**
    * write a secretKey to memory
    * @param {number} sk - a pointer to a secret key
    * @param {TypedArray} array - the secret key as a 32 byte TypedArray
    */
-  exports.secretKeyDeserialize = wrapInput(exports._secretKeyDeserialize, true)
+  exports.secretKeyDeserialize = wrapInput(mod._blsSecretKeyDeserialize, true)
 
   /**
    * write a secretKey to memory and returns a pointer to it
@@ -198,7 +193,7 @@ mod.onRuntimeInitialized = function () {
    * @param {number} sk - a pointer to a public key
    * @param {TypedArray} array - the secret key as a 64 byte TypedArray
    */
-  exports.publicKeyDeserialize = wrapInput(exports._publicKeyDeserialize, true)
+  exports.publicKeyDeserialize = wrapInput(mod._blsPublicKeyDeserialize, true)
 
   /**
    * write a publicKey to memory and returns a pointer to it
@@ -216,7 +211,7 @@ mod.onRuntimeInitialized = function () {
    * @param {number} sig - a pointer to a signature
    * @param {TypedArray} array - the signature as a 32 byte TypedArray
    */
-  exports.signatureDeserialize = wrapInput(exports._signatureDeserialize)
+  exports.signatureDeserialize = wrapInput(mod._blsSignatureDeserialize)
 
   /**
    * write a signature to memory and returns a pointer to it
@@ -230,20 +225,33 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
+   * Initialize a secret key by a Cryptographically Secure Pseudo Random Number Generator
+   * @param {TypedArray} array - the secret key as a TypedArray
+   */
+  exports.secretKeySetByCSPRNG = mod._blsSecretKeySetByCSPRNG
+
+  /**
+   * Create a public key from the secret key
+   * @param {TypedArray} array - the public key as a TypedArray
+   * @param {TypedArray} array - the secret key as a TypedArray
+   */
+  exports.getPublicKey = mod._blsGetPublicKey
+
+  /**
    * Recovers a secret key for a group given the groups secret keys shares and the groups ids
    * @param {number} sk - a pointer to a secret key that will be generated
    * @param {Array<number>} sksArray - an array of pointers to the groups secret key shares. The length of the array should be the threshold number for the group
    * @param {Array<numbers>} idArrah - an array of pointers to ids in the groups. The length of the array should be the threshold number for the group
    */
-  exports.secretKeyRecover = wrapRecover(exports._secretKeyRecover, FR_SIZE, ID_SIZE)
+  exports.secretKeyRecover = wrapRecover(mod._blsSecretKeyRecover, FR_SIZE, ID_SIZE)
 
   /**
    * Recovers a public key for a group given the groups public keys shares and the groups ids
-   * @param {number} pk - a pointer to a secret key that will be generated
+   * @param {number} pk - a pointer to a public key that will be generated
    * @param {Array<number>} pksArray - an array of pointers to the groups public key shares. The length of the array should be the threshold number for the group
    * @param {Array<numbers>} idArrah - an array of pointers to ids in the groups. The length of the array should be the threshold number for the group
    */
-  exports.publicKeyRecover = wrapRecover(exports._publicKeyRecover, G2_SIZE, ID_SIZE)
+  exports.publicKeyRecover = wrapRecover(mod._blsPublicKeyRecover, G2_SIZE, ID_SIZE)
 
   /**
    * Recovers a signature for a group given the groups public keys shares and the groups ids
@@ -251,7 +259,7 @@ mod.onRuntimeInitialized = function () {
    * @param {Array<number>} sigArray - an array of pointers to signature shares. The length of the array should be the threshold number for the group
    * @param {Array<numbers>} idArrah - an array of pointers to ids in the groups. The length of the array should be the threshold number for the group
    */
-  exports.signatureRecover = wrapRecover(exports._signatureRecover, G1_SIZE, ID_SIZE)
+  exports.signatureRecover = wrapRecover(mod._blsSignatureRecover, G1_SIZE, ID_SIZE)
 
   /**
    * Creates a secket key share for a group member given the groups members id (which is a the secret key) and array of master secret keys
@@ -259,7 +267,7 @@ mod.onRuntimeInitialized = function () {
    * @param {Array<number>} msk - an array of master secret keys. The number of keys is the threshould of the group.
    * @param {number} id - the id of the member
    */
-  exports.secretKeyShare = wrapKeyShare(exports._secretKeyShare, FR_SIZE)
+  exports.secretKeyShare = wrapKeyShare(mod._blsSecretKeyShare, FR_SIZE)
 
   /**
    * Creates a public key share for a group member given the groups members id (which is a the secret key) and array of master public keys
@@ -267,7 +275,7 @@ mod.onRuntimeInitialized = function () {
    * @param {Array<number>} mpk - an array of master public keys. The number of keys is the threshould of the group.
    * @param {number} id - the id of the member
    */
-  exports.publicKeyShare = wrapKeyShare(exports._publicKeyShare, G2_SIZE)
+  exports.publicKeyShare = wrapKeyShare(mod._blsPublicKeyShare, G2_SIZE)
 
   initCb()
 }
