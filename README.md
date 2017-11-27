@@ -6,7 +6,7 @@
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)  
 
-This libary provides primitives for creating and verifying [BLS threshold signatures](https://en.wikipedia.org/wiki/Boneh–Lynn–Shacham) in Webassemblt with a JS API. All the hard work is done by [herumi/bls](https://github.com/herumi/bls). This wraps the bls C++ code which is compiled to Webassembly for easier use.
+This libary provides primitives for creating and verifying [BLS threshold signatures](https://en.wikipedia.org/wiki/Boneh–Lynn–Shacham) in Webassembly with a JS API. All the hard work is done by [herumi/bls](https://github.com/herumi/bls). This wraps the bls C++ code which is compiled to Webassembly for easier use.
 
 # INSTALL
 `npm install bls-lib`
