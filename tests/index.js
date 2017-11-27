@@ -22,7 +22,7 @@ bls.onModuleInit(() => {
       bls.sign(sig, sec, msg)
 
       const v = bls.verify(sig, pub, msg)
-      t.equals(v, 1)
+      t.equals(v, true)
     })
   })
 
@@ -39,7 +39,7 @@ bls.onModuleInit(() => {
     bls.getPublicKey(pub, sec)
 
     const v = bls.verify(sig, pub, msg)
-    t.equals(v, 1)
+    t.equals(v, true)
 
     bls.free(sec)
     bls.free(sig)
@@ -79,7 +79,7 @@ bls.onModuleInit(() => {
     pub = bls.publicKeyImport(pubArray)
 
     const v = bls.verify(sig, pub, msg)
-    t.equals(v, 1)
+    t.equals(v, true)
 
     bls.free(sec)
     bls.free(sig)
@@ -145,7 +145,7 @@ bls.onModuleInit(() => {
       sigs.push(sig)
       const r = bls.verify(sig, pk, msg)
 
-      t.equals(r, 1, 'should verify')
+      t.equals(r, true, 'should verify')
     }
 
     // recover
