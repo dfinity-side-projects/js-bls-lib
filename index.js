@@ -1,4 +1,5 @@
 const nop = require('nop')
+const Buffer = require('safe-buffer').Buffer
 const mod = require('./build/bls_lib.js')
 
 let init = false
