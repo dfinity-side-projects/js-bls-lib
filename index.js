@@ -1,10 +1,11 @@
 const nop = require('nop')
+const Buffer = require('safe-buffer').Buffer
 const mod = require('./build/bls_lib.js')
-
-exports.mod = mod
 
 let init = false
 let initCb = nop
+
+exports.mod = mod
 
 /**
  * takes a callback that is called once the module is setup
@@ -138,8 +139,9 @@ mod.onRuntimeInitialized = function () {
    * @param {number} sig - a pointer to the a signature
    * @param {number} pk - a pointer to the secret key
    * @param {TypedArray|String} msg - the message that was signed
+   * @returns {Boolean}
    */
-  exports.verify = wrapInput(mod._blsVerify, true)
+  exports.verify = returnBool(wrapInput(mod._blsVerify))
 
   /**
    * given a pointer to a public key this returns 64 byte Int8Array containing the key
@@ -167,14 +169,14 @@ mod.onRuntimeInitialized = function () {
    * @param {number} sk - a pointer to a secret key
    * @param {String|TypedArray} seed - the seed phrase
    */
-  exports.hashToSecretKey = wrapInput(mod._blsHashToSecretKey, true)
+  exports.hashToSecretKey = wrapInput(mod._blsHashToSecretKey)
 
   /**
    * write a secretKey to memory
    * @param {number} sk - a pointer to a secret key
    * @param {TypedArray} array - the secret key as a 32 byte TypedArray
    */
-  exports.secretKeyDeserialize = wrapInput(mod._blsSecretKeyDeserialize, true)
+  exports.secretKeyDeserialize = wrapInput(mod._blsSecretKeyDeserialize)
 
   /**
    * write a secretKey to memory and returns a pointer to it
@@ -193,7 +195,7 @@ mod.onRuntimeInitialized = function () {
    * @param {number} sk - a pointer to a public key
    * @param {TypedArray} array - the secret key as a 64 byte TypedArray
    */
-  exports.publicKeyDeserialize = wrapInput(mod._blsPublicKeyDeserialize, true)
+  exports.publicKeyDeserialize = wrapInput(mod._blsPublicKeyDeserialize)
 
   /**
    * write a publicKey to memory and returns a pointer to it
@@ -277,7 +279,43 @@ mod.onRuntimeInitialized = function () {
    */
   exports.publicKeyShare = wrapKeyShare(mod._blsPublicKeyShare, G2_SIZE)
 
+  /**
+   * Take two publicKeys and adds them together. pubkey1 = pubkey1 + pubkey2
+   * @param {number} pubkey1 - a pointer to a public key
+   * @param {number} pubkey2 - a pointer to a public key
+   */
+  exports.publicKeyAdd = mod._blsPublicKeyAdd
+
+  /**
+   * Take two secretKeys and adds them together. seckey1 = seckey1 + seckey2
+   * @param {number} seckey1 - a pointer to a secret key
+   * @param {number} seckey2 - a pointer to a secret key
+   */
+  exports.secretKeyAdd = mod._blsSecretKeyAdd
+
+  /**
+   * Take two publicKeys and tests thier equality
+   * @param {number} pubkey1 - a pointer to a public key
+   * @param {number} pubkey2 - a pointer to a public key
+   * return {Boolean}
+   */
+  exports.publicKeyIsEqual = returnBool(mod._blsPublicKeyIsEqual)
+
+  /**
+   * Does Diffie–Hellman key exchange
+   * @param {number} sharedSecretKey - a pointer to a secretKey that will be populated with the shared secret
+   * @param {number} secretKey - a pointer to a secret key
+   * @param {number} pubkey - a pointer to a public key
+   */
+  exports.dhKeyExchange = mod._blsDHKeyExchange
+
   initCb()
+}
+
+function returnBool (func) {
+  return function () {
+    return func.apply(null, arguments) === 1
+  }
 }
 
 function wrapInput (func) {
