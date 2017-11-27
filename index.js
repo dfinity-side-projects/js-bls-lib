@@ -313,7 +313,7 @@ mod.onRuntimeInitialized = function () {
 
 function returnBool (func) {
   return function () {
-    return func(arguments) === 1
+    return func.apply(null, arguments) === 1
   }
 }
 
