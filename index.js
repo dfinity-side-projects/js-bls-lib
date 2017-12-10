@@ -176,7 +176,7 @@ mod.onRuntimeInitialized = function () {
    * @param {number} sk - a pointer to a secret key
    * @param {TypedArray} array - the secret key as a 32 byte TypedArray
    */
-  exports.secretKeyDeserialize = wrapInput(mod._blsSecretKeyDeserialize)
+  exports.secretKeyDeserialize = wrapDeserialize(mod._blsSecretKeyDeserialize)
 
   /**
    * write a secretKey to memory and returns a pointer to it
@@ -195,7 +195,7 @@ mod.onRuntimeInitialized = function () {
    * @param {number} sk - a pointer to a public key
    * @param {TypedArray} array - the secret key as a 64 byte TypedArray
    */
-  exports.publicKeyDeserialize = wrapInput(mod._blsPublicKeyDeserialize)
+  exports.publicKeyDeserialize = wrapDeserialize(mod._blsPublicKeyDeserialize)
 
   /**
    * write a publicKey to memory and returns a pointer to it
@@ -213,7 +213,7 @@ mod.onRuntimeInitialized = function () {
    * @param {number} sig - a pointer to a signature
    * @param {TypedArray} array - the signature as a 32 byte TypedArray
    */
-  exports.signatureDeserialize = wrapInput(mod._blsSignatureDeserialize)
+  exports.signatureDeserialize = wrapDeserialize(mod._blsSignatureDeserialize)
 
   /**
    * write a signature to memory and returns a pointer to it
@@ -331,6 +331,18 @@ function wrapInput (func) {
     let r = func(...args, pos, buf.length)
     mod._free(pos)
     return r
+  }
+}
+
+function wrapDeserialize (func) {
+  return function (p, buf) {
+    const pos = mod._malloc(buf.length)
+    mod.HEAP8.set(buf, pos)
+    const r = func(p, pos, buf.length)
+    mod._free(pos)
+    if (r == 0) {
+      throw new Error('Deserialize err')
+    }
   }
 }
 
