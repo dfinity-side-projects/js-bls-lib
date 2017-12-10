@@ -340,7 +340,7 @@ function wrapDeserialize (func) {
     mod.HEAP8.set(buf, pos)
     const r = func(p, pos, buf.length)
     mod._free(pos)
-    if (r == 0) {
+    if (r === 0) {
       throw new Error('Deserialize err')
     }
   }
