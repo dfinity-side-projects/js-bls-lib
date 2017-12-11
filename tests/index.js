@@ -88,6 +88,17 @@ bls.onModuleInit(() => {
     t.end()
   })
 
+  tape('bad import', t => {
+    bls.init()
+    t.plan(1)
+    try {
+      bls.secretKeyImport(new Uint8Array([1, 2, 3]))
+    } catch (e) {
+      t.pass(true)
+    }
+    t.end()
+  })
+
   tape('shares', t => {
     bls.init()
     const numOfPlayers = 5
