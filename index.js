@@ -335,11 +335,9 @@ function wrapInput (func) {
 }
 
 function wrapDeserialize (func) {
+  func = wrapInput(func)
   return function (p, buf) {
-    const pos = mod._malloc(buf.length)
-    mod.HEAP8.set(buf, pos)
-    const r = func(p, pos, buf.length)
-    mod._free(pos)
+    const r = func(p, buf)
     if (r === 0) {
       throw new Error('Deserialize err')
     }
