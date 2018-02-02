@@ -41,9 +41,9 @@
 
 ## onModuleInit
 
-[index.js:14-21](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L14-L21 "Source code on GitHub")
+[index.js:14-21](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L14-L21 "Source code on GitHub")
 
-takes a callback that is called once the module is setup
+Takes a callback that is called once the module is setup
 
 **Parameters**
 
@@ -51,61 +51,61 @@ takes a callback that is called once the module is setup
 
 ## MCLBN_CURVE_FP254BNB
 
-[index.js:26-26](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L26-L26 "Source code on GitHub")
+[index.js:26-26](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L26-L26 "Source code on GitHub")
 
-the FP254BNB curve
+The FP254BNB curve
 
 ## MCLBN_CURVE_FP382_1
 
-[index.js:31-31](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L31-L31 "Source code on GitHub")
+[index.js:31-31](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L31-L31 "Source code on GitHub")
 
-the FP382_1 curve
+The FP382_1 curve
 
 ## MCLBN_CURVE_FP382_2
 
-[index.js:36-36](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L36-L36 "Source code on GitHub")
+[index.js:36-36](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L36-L36 "Source code on GitHub")
 
-the FP382_2 curve
+The FP382_2 curve
 
 ## init
 
-[index.js:49-51](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L49-L51 "Source code on GitHub")
+[index.js:49-51](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L49-L51 "Source code on GitHub")
 
-intailizes the libary to use a given curve
+Initializes the library to use a given curve
 
 **Parameters**
 
--   `curve` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** the curves that can be used are MCLBN_CURVE_FP254BNB, MCLBN_CURVE_FP382_1 or MCLBN_CURVE_FP382_2 (optional, default `exports.MCLBN_CURVE_FP254BNB`)
+-   `curve` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** the curves that can be used are MCLBN_CURVE_FP254BNB, MCLBN_CURVE_FP382_1 or MCLBN_CURVE_FP382_2 (optional, default `exports.MCLBN_CURVE_FP254BNB`)
 
 ## secretKey
 
-[index.js:57-59](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L57-L59 "Source code on GitHub")
+[index.js:57-59](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L57-L59 "Source code on GitHub")
 
-allocates a secret key
+Allocates a secret key
 
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** the pointer to the key
+Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** the pointer to the key
 
 ## publicKey
 
-[index.js:65-67](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L65-L67 "Source code on GitHub")
+[index.js:65-67](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L65-L67 "Source code on GitHub")
 
-allocates a secret key
+Allocates a secret key
 
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** the pointer to the key
+Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** the pointer to the key
 
 ## signature
 
-[index.js:73-75](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L73-L75 "Source code on GitHub")
+[index.js:73-75](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L73-L75 "Source code on GitHub")
 
-allocates a signature
+Allocates a signature
 
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** the pointer to the signture
+Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** the pointer to the signature
 
 ## free
 
-[index.js:80-82](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L80-L82 "Source code on GitHub")
+[index.js:80-82](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L80-L82 "Source code on GitHub")
 
-frees a pointer
+Frees a pointer
 
 **Parameters**
 
@@ -113,9 +113,9 @@ frees a pointer
 
 ## freeArray
 
-[index.js:87-89](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L87-L89 "Source code on GitHub")
+[index.js:87-89](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L87-L89 "Source code on GitHub")
 
-frees an array of pointers
+Frees an array of pointers
 
 **Parameters**
 
@@ -123,308 +123,308 @@ frees an array of pointers
 
 ## idSetInt
 
-[index.js:96-101](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L96-L101 "Source code on GitHub")
+[index.js:96-101](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L96-L101 "Source code on GitHub")
 
-creates an ID from an int to use in with threshold groups
+Creates an ID from an int to use with threshold groups
 
 **Parameters**
 
--   `sk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key, secret key stuct is used to hold the id
--   `n` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a int repsenting the ID. n cannot be zero.
+-   `sk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key, secret key struct is used to hold the id
+-   `n` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a int representing the ID. n cannot be zero.
 
 ## idImportFromInt
 
-[index.js:108-112](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L108-L112 "Source code on GitHub")
+[index.js:108-112](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L108-L112 "Source code on GitHub")
 
-creates an ID from an int and returns a pointer to it
+Creates an ID from an int and returns a pointer to it
 
 **Parameters**
 
--   `n` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a int repsenting the ID. n cannot be zero.
+-   `n` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a int representing the ID. n cannot be zero.
 
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 ## idImport
 
-[index.js:119-127](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L119-L127 "Source code on GitHub")
+[index.js:119-127](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L119-L127 "Source code on GitHub")
 
-creates an ID from an int and returns a pointer to it
+Creates an ID from an int and returns a pointer to it
 
 **Parameters**
 
--   `n` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a int repsenting the ID. n cannot be zero.
+-   `n` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a int representing the ID. n cannot be zero.
 
-Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 ## sign
 
-[index.js:135-135](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L135-L135 "Source code on GitHub")
+[index.js:135-135](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L135-L135 "Source code on GitHub")
 
-signs a message
+Signs a message
 
 **Parameters**
 
--   `sig` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the a signature
--   `sk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key
--   `msg` **([TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) \| [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** the message to sign
+-   `sig` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the a signature
+-   `sk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key
+-   `msg` **([TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) \| [String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** the message to sign
 
 ## verify
 
-[index.js:144-144](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L144-L144 "Source code on GitHub")
+[index.js:144-144](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L144-L144 "Source code on GitHub")
 
-verifies a signature
+Verifies a signature
 
 **Parameters**
 
--   `sig` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the a signature
--   `pk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key
--   `msg` **([TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) \| [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** the message that was signed
+-   `sig` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the a signature
+-   `pk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key
+-   `msg` **([TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) \| [String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** the message that was signed
 
-Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ## publicKeyExport
 
-[index.js:151-151](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L151-L151 "Source code on GitHub")
+[index.js:151-151](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L151-L151 "Source code on GitHub")
 
-given a pointer to a public key this returns 64 byte Int8Array containing the key
+Given a pointer to a public key, this returns a 64 byte Int8Array containing the key
 
 **Parameters**
 
--   `pk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key
+-   `pk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key
 
-Returns **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** 
+Returns **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** 
 
 ## secretKeyExport
 
-[index.js:158-158](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L158-L158 "Source code on GitHub")
+[index.js:158-158](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L158-L158 "Source code on GitHub")
 
-given a pointer to a secret key this returns 32 byte Int8Array containing the key
+Given a pointer to a secret key, this returns a 32 byte Int8Array containing the key
 
 **Parameters**
 
--   `pk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key
+-   `pk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key
 
-Returns **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** 
+Returns **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** 
 
 ## signatureExport
 
-[index.js:165-165](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L165-L165 "Source code on GitHub")
+[index.js:165-165](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L165-L165 "Source code on GitHub")
 
-given a pointer to a signature this returns 32 byte Int8Array containing the signature
+Given a pointer to a signature, this returns a 32 byte Int8Array containing the signature
 
 **Parameters**
 
--   `pk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key
+-   `pk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the secret key
 
-Returns **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** 
+Returns **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** 
 
 ## hashToSecretKey
 
-[index.js:172-172](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L172-L172 "Source code on GitHub")
+[index.js:172-172](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L172-L172 "Source code on GitHub")
 
-generates a secret key given a seed phrase.
+Generates a secret key given a seed phrase
 
 **Parameters**
 
--   `sk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
--   `seed` **([String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) \| [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray))** the seed phrase
+-   `sk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
+-   `seed` **([String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray))** the seed phrase
 
 ## secretKeyDeserialize
 
-[index.js:179-179](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L179-L179 "Source code on GitHub")
+[index.js:179-179](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L179-L179 "Source code on GitHub")
 
-write a secretKey to memory
+Writes a secretKey to memory
 
 **Parameters**
 
--   `sk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
--   `array` **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a 32 byte TypedArray
+-   `sk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
+-   `array` **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a 32 byte TypedArray
 
 ## secretKeyImport
 
-[index.js:187-191](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L187-L191 "Source code on GitHub")
+[index.js:187-191](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L187-L191 "Source code on GitHub")
 
-write a secretKey to memory and returns a pointer to it
+Writes a secretKey to memory and returns a pointer to it
 
 **Parameters**
 
 -   `buf`  
--   `sk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
--   `array` **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a 32 byte TypedArray
+-   `sk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
+-   `array` **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a 32 byte TypedArray
 
-Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+Returns **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 ## publicKeyDeserialize
 
-[index.js:198-198](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L198-L198 "Source code on GitHub")
+[index.js:198-198](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L198-L198 "Source code on GitHub")
 
-write a publicKey to memory
+Writes a publicKey to memory
 
 **Parameters**
 
--   `sk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key
--   `array` **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a 64 byte TypedArray
+-   `sk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key
+-   `array` **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a 64 byte TypedArray
 
 ## publicKeyImport
 
-[index.js:205-209](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L205-L209 "Source code on GitHub")
+[index.js:205-209](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L205-L209 "Source code on GitHub")
 
-write a publicKey to memory and returns a pointer to it
+Writes a publicKey to memory and returns a pointer to it
 
 **Parameters**
 
 -   `buf`  
--   `array` **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a 64 byte TypedArray
+-   `array` **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a 64 byte TypedArray
 
-Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+Returns **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 ## signatureDeserialize
 
-[index.js:216-216](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L216-L216 "Source code on GitHub")
+[index.js:216-216](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L216-L216 "Source code on GitHub")
 
-write a signature to memory
+Writes a signature to memory
 
 **Parameters**
 
--   `sig` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a signature
--   `array` **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the signature as a 32 byte TypedArray
+-   `sig` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a signature
+-   `array` **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the signature as a 32 byte TypedArray
 
 ## signatureImport
 
-[index.js:223-227](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L223-L227 "Source code on GitHub")
+[index.js:223-227](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L223-L227 "Source code on GitHub")
 
-write a signature to memory and returns a pointer to it
+Writes a signature to memory and returns a pointer to it
 
 **Parameters**
 
 -   `buf`  
--   `array` **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the signature as a 32 byte TypedArray
+-   `array` **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the signature as a 32 byte TypedArray
 
-Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+Returns **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 ## secretKeySetByCSPRNG
 
-[index.js:233-233](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L233-L233 "Source code on GitHub")
+[index.js:233-233](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L233-L233 "Source code on GitHub")
 
-Initialize a secret key by a Cryptographically Secure Pseudo Random Number Generator
+Initializes a secret key by a Cryptographically Secure Pseudo Random Number Generator
 
 **Parameters**
 
--   `array` **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a TypedArray
+-   `array` **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a TypedArray
 
 ## getPublicKey
 
-[index.js:240-240](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L240-L240 "Source code on GitHub")
+[index.js:240-240](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L240-L240 "Source code on GitHub")
 
-Create a public key from the secret key
+Creates a public key from the secret key
 
 **Parameters**
 
--   `array` **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the public key as a TypedArray
--   `array` **[TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a TypedArray
+-   `array` **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the public key as a TypedArray
+-   `array` **[TypedArray](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray)** the secret key as a TypedArray
 
 ## secretKeyRecover
 
-[index.js:248-248](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L248-L248 "Source code on GitHub")
+[index.js:248-248](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L248-L248 "Source code on GitHub")
 
 Recovers a secret key for a group given the groups secret keys shares and the groups ids
 
 **Parameters**
 
--   `sk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key that will be generated
--   `sksArray` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)>** an array of pointers to the groups secret key shares. The length of the array should be the threshold number for the group
--   `idArrah` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;numbers>** an array of pointers to ids in the groups. The length of the array should be the threshold number for the group
+-   `sk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key that will be generated
+-   `sksArray` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** an array of pointers to the groups secret key shares. The length of the array should be the threshold number for the group
+-   `idArrah` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;numbers>** an array of pointers to ids in the groups. The length of the array should be the threshold number for the group
 
 ## publicKeyRecover
 
-[index.js:256-256](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L256-L256 "Source code on GitHub")
+[index.js:256-256](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L256-L256 "Source code on GitHub")
 
 Recovers a public key for a group given the groups public keys shares and the groups ids
 
 **Parameters**
 
--   `pk` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key that will be generated
--   `pksArray` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)>** an array of pointers to the groups public key shares. The length of the array should be the threshold number for the group
--   `idArrah` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;numbers>** an array of pointers to ids in the groups. The length of the array should be the threshold number for the group
+-   `pk` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key that will be generated
+-   `pksArray` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** an array of pointers to the groups public key shares. The length of the array should be the threshold number for the group
+-   `idArrah` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;numbers>** an array of pointers to ids in the groups. The length of the array should be the threshold number for the group
 
 ## signatureRecover
 
-[index.js:264-264](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L264-L264 "Source code on GitHub")
+[index.js:264-264](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L264-L264 "Source code on GitHub")
 
 Recovers a signature for a group given the groups public keys shares and the groups ids
 
 **Parameters**
 
--   `sig` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the signature that will be generated
--   `sigArray` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)>** an array of pointers to signature shares. The length of the array should be the threshold number for the group
--   `idArrah` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;numbers>** an array of pointers to ids in the groups. The length of the array should be the threshold number for the group
+-   `sig` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to the signature that will be generated
+-   `sigArray` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** an array of pointers to signature shares. The length of the array should be the threshold number for the group
+-   `idArrah` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;numbers>** an array of pointers to ids in the groups. The length of the array should be the threshold number for the group
 
 ## secretKeyShare
 
-[index.js:272-272](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L272-L272 "Source code on GitHub")
+[index.js:272-272](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L272-L272 "Source code on GitHub")
 
-Creates a secket key share for a group member given the groups members id (which is a the secret key) and array of master secret keys
+Creates a secret key share for a group member given the groups members id (which is the secret key) and array of master secret keys
 
 **Parameters**
 
--   `skshare` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key that will be generated
--   `msk` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)>** an array of master secret keys. The number of keys is the threshould of the group.
--   `id` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** the id of the member
+-   `skshare` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key that will be generated
+-   `msk` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** an array of master secret keys. The number of keys is the threshold of the group.
+-   `id` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** the id of the member
 
 ## publicKeyShare
 
-[index.js:280-280](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L280-L280 "Source code on GitHub")
+[index.js:280-280](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L280-L280 "Source code on GitHub")
 
 Creates a public key share for a group member given the groups members id (which is a the secret key) and array of master public keys
 
 **Parameters**
 
--   `pkshare` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key that will be generated
--   `mpk` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)>** an array of master public keys. The number of keys is the threshould of the group.
--   `id` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** the id of the member
+-   `pkshare` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key that will be generated
+-   `mpk` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)>** an array of master public keys. The number of keys is the threshold of the group.
+-   `id` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** the id of the member
 
 ## publicKeyAdd
 
-[index.js:287-287](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L287-L287 "Source code on GitHub")
+[index.js:287-287](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L287-L287 "Source code on GitHub")
 
-Take two publicKeys and adds them together. pubkey1 = pubkey1 + pubkey2
+Takes two publicKeys and adds them together. pubkey1 = pubkey1 + pubkey2
 
 **Parameters**
 
--   `pubkey1` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key
--   `pubkey2` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key
+-   `pubkey1` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key
+-   `pubkey2` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key
 
 ## secretKeyAdd
 
-[index.js:294-294](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L294-L294 "Source code on GitHub")
+[index.js:294-294](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L294-L294 "Source code on GitHub")
 
-Take two secretKeys and adds them together. seckey1 = seckey1 + seckey2
+Takes two secretKeys and adds them together. seckey1 = seckey1 + seckey2
 
 **Parameters**
 
--   `seckey1` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
--   `seckey2` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
+-   `seckey1` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
+-   `seckey2` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
 
 ## publicKeyIsEqual
 
-[index.js:302-302](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L302-L302 "Source code on GitHub")
+[index.js:302-302](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L302-L302 "Source code on GitHub")
 
-Take two publicKeys and tests thier equality
+Takes two publicKeys and tests their equality
 
 **Parameters**
 
--   `pubkey1` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key
--   `pubkey2` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key
+-   `pubkey1` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key
+-   `pubkey2` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key
     return {Boolean}
 
 ## dhKeyExchange
 
-[index.js:310-310](https://github.com/dfinity/bls-lib/blob/2b6104bd4d6a111c264a5b60ec590f39c84b3da0/index.js#L310-L310 "Source code on GitHub")
+[index.js:310-310](https://github.com/dfinity/js-bls-lib/blob/3c007f5ed0e57b38cc7df4239d9631d617eef1cc/index.js#L310-L310 "Source code on GitHub")
 
 Does Diffie–Hellman key exchange
 
 **Parameters**
 
--   `sharedSecretKey` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secretKey that will be populated with the shared secret
--   `secretKey` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
--   `pubkey` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key
+-   `sharedSecretKey` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secretKey that will be populated with the shared secret
+-   `secretKey` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a secret key
+-   `pubkey` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** a pointer to a public key

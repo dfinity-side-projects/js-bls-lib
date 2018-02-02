@@ -3,7 +3,7 @@
 [![Coverage Status](https://img.shields.io/coveralls/dfinity/js-bls-lib.svg?style=flat-square)](https://coveralls.io/r/dfinity/js-bls-lib)
 
 
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)  
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 # Synopsis
 
@@ -45,17 +45,17 @@ bls.onModuleInit(() => {
 # API
 [./docs/](./docs/index.md)
 
-# Dependants
-* [verifible secret sharing](https://github.com/wanderer/vss)  
-* [distributed key generation](https://github.com/wanderer/dkg)
+# Dependents
+* [verifiable secret sharing](https://github.com/dfinity/vss)
+* [distributed key generation](https://github.com/dfinity/dkg)
 
 # Building
 
-First install the dependancies [emscripten](https://github.com/kripken/emscripten) and [ninja](ninja-build.org)
+First install the dependencies [emscripten](https://github.com/kripken/emscripten) and [ninja](ninja-build.org)
 
 ```
- git clone --recursive https://github.com/wanderer/bls-lib.git 
- cd bls-lib/build
+ git clone --recursive https://github.com/dfinity/js-bls-lib.git
+ cd js-bls-lib/build
  ninja
 ```
 

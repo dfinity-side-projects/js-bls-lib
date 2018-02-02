@@ -8,8 +8,8 @@ let initCb = nop
 exports.mod = mod
 
 /**
- * takes a callback that is called once the module is setup
- * @params {Function} cb - the callback tobe called once the module is intailized
+ * Takes a callback that is called once the module is setup
+ * @params {Function} cb - the callback to be called once the module is initialized
  */
 exports.onModuleInit = function (cb) {
   if (init) {
@@ -21,17 +21,17 @@ exports.onModuleInit = function (cb) {
 }
 
 /**
- * the FP254BNB curve
+ * The FP254BNB curve
  */
 exports.MCLBN_CURVE_FP254BNB = 0
 
 /**
- * the FP382_1 curve
+ * The FP382_1 curve
  */
 exports.MCLBN_CURVE_FP382_1 = 1
 
 /**
- * the FP382_2 curve
+ * The FP382_2 curve
  */
 exports.MCLBN_CURVE_FP382_2 = 2
 
@@ -43,7 +43,7 @@ const G2_SIZE = FR_SIZE * 3 * 2
 
 mod.onRuntimeInitialized = function () {
   /**
-   * intailizes the libary to use a given curve
+   * Initializes the library to use a given curve
    * @param {number} curve - the curves that can be used are MCLBN_CURVE_FP254BNB, MCLBN_CURVE_FP382_1 or MCLBN_CURVE_FP382_2
    */
   exports.init = function (curve = exports.MCLBN_CURVE_FP254BNB) {
@@ -51,7 +51,7 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
-   * allocates a secret key
+   * Allocates a secret key
    * @returns {number} the pointer to the key
    */
   exports.secretKey = function () {
@@ -59,7 +59,7 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
-   * allocates a secret key
+   * Allocates a secret key
    * @returns {number} the pointer to the key
    */
   exports.publicKey = function () {
@@ -67,31 +67,31 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
-   * allocates a signature
-   * @returns {number} the pointer to the signture
+   * Allocates a signature
+   * @returns {number} the pointer to the signature
    */
   exports.signature = function () {
     return mod._malloc(G1_SIZE)
   }
 
   /**
-   * frees a pointer
+   * Frees a pointer
    */
   exports.free = function (x) {
     mod._free(x)
   }
 
   /**
-   * frees an array of pointers
+   * Frees an array of pointers
    */
   exports.freeArray = function (a) {
     a.forEach(el => mod._free(el))
   }
 
   /**
-   * creates an ID from an int to use in with threshold groups
-   * @param {number} sk - a pointer to the secret key, secret key stuct is used to hold the id
-   * @param {number} n - a int repsenting the ID. n cannot be zero.
+   * Creates an ID from an int to use with threshold groups
+   * @param {number} sk - a pointer to the secret key, secret key struct is used to hold the id
+   * @param {number} n - a int representing the ID. n cannot be zero.
    */
   exports.idSetInt = function (sk, n) {
     if (n === 0) {
@@ -101,8 +101,8 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
-   * creates an ID from an int and returns a pointer to it
-   * @param {number} n - a int repsenting the ID. n cannot be zero.
+   * Creates an ID from an int and returns a pointer to it
+   * @param {number} n - a int representing the ID. n cannot be zero.
    * @return {number}
    */
   exports.idImportFromInt = function (n) {
@@ -112,8 +112,8 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
-   * creates an ID from an int and returns a pointer to it
-   * @param {number} n - a int repsenting the ID. n cannot be zero.
+   * Creates an ID from an int and returns a pointer to it
+   * @param {number} n - a int representing the ID. n cannot be zero.
    * @return {number}
    */
   exports.idImport = function (n) {
@@ -127,7 +127,7 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
-   * signs a message
+   * Signs a message
    * @param {number} sig - a pointer to the a signature
    * @param {number} sk - a pointer to the secret key
    * @param {TypedArray|String} msg - the message to sign
@@ -135,7 +135,7 @@ mod.onRuntimeInitialized = function () {
   exports.sign = wrapInput(mod._blsSign)
 
   /**
-   * verifies a signature
+   * Verifies a signature
    * @param {number} sig - a pointer to the a signature
    * @param {number} pk - a pointer to the secret key
    * @param {TypedArray|String} msg - the message that was signed
@@ -144,42 +144,42 @@ mod.onRuntimeInitialized = function () {
   exports.verify = returnBool(wrapInput(mod._blsVerify))
 
   /**
-   * given a pointer to a public key this returns 64 byte Int8Array containing the key
+   * Given a pointer to a public key, this returns a 64 byte Int8Array containing the key
    * @param {number} pk - a pointer to the secret key
    * @return {TypedArray}
    */
   exports.publicKeyExport = wrapOutput(mod._blsPublicKeySerialize, 64)
 
   /**
-   * given a pointer to a secret key this returns 32 byte Int8Array containing the key
+   * Given a pointer to a secret key, this returns a 32 byte Int8Array containing the key
    * @param {number} pk - a pointer to the secret key
    * @return {TypedArray}
    */
   exports.secretKeyExport = wrapOutput(mod._blsSecretKeySerialize, 32)
 
   /**
-   * given a pointer to a signature this returns 32 byte Int8Array containing the signature
+   * Given a pointer to a signature, this returns a 32 byte Int8Array containing the signature
    * @param {number} pk - a pointer to the secret key
    * @return {TypedArray}
    */
   exports.signatureExport = wrapOutput(mod._blsSignatureSerialize, 32)
 
   /**
-   * generates a secret key given a seed phrase.
+   * Generates a secret key given a seed phrase
    * @param {number} sk - a pointer to a secret key
    * @param {String|TypedArray} seed - the seed phrase
    */
   exports.hashToSecretKey = wrapInput(mod._blsHashToSecretKey)
 
   /**
-   * write a secretKey to memory
+   * Writes a secretKey to memory
    * @param {number} sk - a pointer to a secret key
    * @param {TypedArray} array - the secret key as a 32 byte TypedArray
    */
   exports.secretKeyDeserialize = wrapDeserialize(mod._blsSecretKeyDeserialize)
 
   /**
-   * write a secretKey to memory and returns a pointer to it
+   * Writes a secretKey to memory and returns a pointer to it
    * @param {number} sk - a pointer to a secret key
    * @param {TypedArray} array - the secret key as a 32 byte TypedArray
    * @return {Number}
@@ -191,14 +191,14 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
-   * write a publicKey to memory
+   * Writes a publicKey to memory
    * @param {number} sk - a pointer to a public key
    * @param {TypedArray} array - the secret key as a 64 byte TypedArray
    */
   exports.publicKeyDeserialize = wrapDeserialize(mod._blsPublicKeyDeserialize)
 
   /**
-   * write a publicKey to memory and returns a pointer to it
+   * Writes a publicKey to memory and returns a pointer to it
    * @param {TypedArray} array - the secret key as a 64 byte TypedArray
    * @return {Number}
    */
@@ -209,14 +209,14 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
-   * write a signature to memory
+   * Writes a signature to memory
    * @param {number} sig - a pointer to a signature
    * @param {TypedArray} array - the signature as a 32 byte TypedArray
    */
   exports.signatureDeserialize = wrapDeserialize(mod._blsSignatureDeserialize)
 
   /**
-   * write a signature to memory and returns a pointer to it
+   * Writes a signature to memory and returns a pointer to it
    * @param {TypedArray} array - the signature as a 32 byte TypedArray
    * @return {Number}
    */
@@ -227,13 +227,13 @@ mod.onRuntimeInitialized = function () {
   }
 
   /**
-   * Initialize a secret key by a Cryptographically Secure Pseudo Random Number Generator
+   * Initializes a secret key by a Cryptographically Secure Pseudo Random Number Generator
    * @param {TypedArray} array - the secret key as a TypedArray
    */
   exports.secretKeySetByCSPRNG = mod._blsSecretKeySetByCSPRNG
 
   /**
-   * Create a public key from the secret key
+   * Creates a public key from the secret key
    * @param {TypedArray} array - the public key as a TypedArray
    * @param {TypedArray} array - the secret key as a TypedArray
    */
@@ -264,9 +264,9 @@ mod.onRuntimeInitialized = function () {
   exports.signatureRecover = wrapRecover(mod._blsSignatureRecover, G1_SIZE, ID_SIZE)
 
   /**
-   * Creates a secket key share for a group member given the groups members id (which is a the secret key) and array of master secret keys
+   * Creates a secret key share for a group member given the groups members id (which is the secret key) and array of master secret keys
    * @param {number} skshare - a pointer to a secret key that will be generated
-   * @param {Array<number>} msk - an array of master secret keys. The number of keys is the threshould of the group.
+   * @param {Array<number>} msk - an array of master secret keys. The number of keys is the threshold of the group.
    * @param {number} id - the id of the member
    */
   exports.secretKeyShare = wrapKeyShare(mod._blsSecretKeyShare, FR_SIZE)
@@ -274,27 +274,27 @@ mod.onRuntimeInitialized = function () {
   /**
    * Creates a public key share for a group member given the groups members id (which is a the secret key) and array of master public keys
    * @param {number} pkshare - a pointer to a secret key that will be generated
-   * @param {Array<number>} mpk - an array of master public keys. The number of keys is the threshould of the group.
+   * @param {Array<number>} mpk - an array of master public keys. The number of keys is the threshold of the group.
    * @param {number} id - the id of the member
    */
   exports.publicKeyShare = wrapKeyShare(mod._blsPublicKeyShare, G2_SIZE)
 
   /**
-   * Take two publicKeys and adds them together. pubkey1 = pubkey1 + pubkey2
+   * Takes two publicKeys and adds them together. pubkey1 = pubkey1 + pubkey2
    * @param {number} pubkey1 - a pointer to a public key
    * @param {number} pubkey2 - a pointer to a public key
    */
   exports.publicKeyAdd = mod._blsPublicKeyAdd
 
   /**
-   * Take two secretKeys and adds them together. seckey1 = seckey1 + seckey2
+   * Takes two secretKeys and adds them together. seckey1 = seckey1 + seckey2
    * @param {number} seckey1 - a pointer to a secret key
    * @param {number} seckey2 - a pointer to a secret key
    */
   exports.secretKeyAdd = mod._blsSecretKeyAdd
 
   /**
-   * Take two publicKeys and tests thier equality
+   * Takes two publicKeys and tests their equality
    * @param {number} pubkey1 - a pointer to a public key
    * @param {number} pubkey2 - a pointer to a public key
    * return {Boolean}
