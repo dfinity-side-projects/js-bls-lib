@@ -1,7 +1,7 @@
 {
   "name": "bls-lib",
   "version": "0.3.1",
-  "description": "this libary provides primitives for creating and verify BLS threshold signatures",
+  "description": "this library provides primitives for creating and verifying BLS threshold signatures",
   "main": "index.js",
   "scripts": {
     "coveralls": "npm run coverage && nyc report --reporter=text-lcov | coveralls",
