@@ -35,6 +35,11 @@ exports.MCLBN_CURVE_FP382_1 = 1
  */
 exports.MCLBN_CURVE_FP382_2 = 2
 
+/**
+ * The BLS12-381 curve
+ */
+exports.MCL_BLS12_381 = 5
+
 const MCLBN_FP_UNIT_SIZE = 6
 const FR_SIZE = MCLBN_FP_UNIT_SIZE * 8
 const ID_SIZE = FR_SIZE
@@ -354,12 +359,18 @@ function wrapOutput (func, size) {
   }
 }
 
+function memcpy (dst, src, size) {
+  for (let i = 0; i < size; i++) {
+    mod.HEAP8[dst + i] = mod.HEAP8[src + i]
+  }
+}
+
 function wrapKeyShare (func, dataSize) {
   return function (x, vec, id) {
     const k = vec.length
     const p = mod._malloc(dataSize * k)
     for (let i = 0; i < k; i++) {
-      mod._memcpy(p + i * dataSize, vec[i], dataSize)
+      memcpy(p + i * dataSize, vec[i], dataSize)
     }
     const r = func(x, p, k, id)
     mod._free(p)
@@ -373,8 +384,8 @@ function wrapRecover (func, dataSize, idDataSize) {
     const p = mod._malloc(dataSize * n)
     const q = mod._malloc(idDataSize * n)
     for (let i = 0; i < n; i++) {
-      mod._memcpy(p + i * dataSize, vec[i], dataSize)
-      mod._memcpy(q + i * idDataSize, idVec[i], idDataSize)
+      memcpy(p + i * dataSize, vec[i], dataSize)
+      memcpy(q + i * idDataSize, idVec[i], idDataSize)
     }
     const r = func(x, p, q, n)
     mod._free(q)
