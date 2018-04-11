@@ -14,7 +14,7 @@ bls.onModuleInit(() => {
       const secArray = Buffer.from(secString, 'hex')
       const sec = bls.secretKeyImport(secArray)
 
-      const pubString = '7ca19ff032c22a00b3d79d8961495af4c6c93c9c2b62bd7279570fcc2ca8d120fc75fd16f55ded79f6392a0769496817cded4760ed658d62627b9e6852b1100d'
+      const pubString = 'cd995480d3287eb8626b1a40b224ed9ada052cae3472665eba297b9785929a1f8ecee5b65dd580f12f239a7183490c4470595ec73cde697cb92d15f1b666c597'
 
       const pub = bls.publicKeyImport(Buffer.from(pubString, 'hex'))
 
