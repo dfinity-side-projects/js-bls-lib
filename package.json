@@ -23,10 +23,10 @@
   "devDependencies": {
     "array-shuffle": "^1.0.1",
     "coveralls": "^3.0.0",
-    "documentation": "^5.3.3",
-    "nyc": "^11.3.0",
-    "standard": "^10.0.0",
-    "tape": "^4.0.3"
+    "documentation": "^6.2.0",
+    "nyc": "^11.6.0",
+    "standard": "^11.0.1",
+    "tape": "^4.9.0"
   },
   "repository": {
     "type": "git",
