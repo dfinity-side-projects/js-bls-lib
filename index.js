@@ -1,6 +1,8 @@
 const nop = require('nop')
 const Buffer = require('safe-buffer').Buffer
 const mod = require('./build/bls_lib.js')
+const crypto = require('crypto')
+crypto.getRandomValues = crypto.randomFillSync
 
 let init = false
 let initCb = nop
