@@ -22,9 +22,9 @@
   "license": "MPL-2.0",
   "devDependencies": {
     "array-shuffle": "^1.0.1",
-    "coveralls": "^3.0.0",
-    "documentation": "^6.2.0",
-    "nyc": "^11.6.0",
+    "coveralls": "^3.0.1",
+    "documentation": "^6.3.3",
+    "nyc": "^11.8.0",
     "standard": "^11.0.1",
     "tape": "^4.9.0"
   },
@@ -51,6 +51,6 @@
   },
   "dependencies": {
     "nop": "^1.0.0",
-    "safe-buffer": "^5.1.1"
+    "safe-buffer": "^5.1.2"
   }
 }
