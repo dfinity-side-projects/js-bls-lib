@@ -1,3 +1,5 @@
+# Deprecated: Please use [bls-wasm](https://github.com/herumi/bls-wasm)
+
 [![NPM Package](https://img.shields.io/npm/v/bls-lib.svg?style=flat-square)](https://www.npmjs.org/package/bls-lib)
 [![Build Status](https://img.shields.io/travis/dfinity/js-bls-lib.svg?branch=master&style=flat-square)](https://travis-ci.org/dfinity/js-bls-lib)
 [![Coverage Status](https://img.shields.io/coveralls/dfinity/js-bls-lib.svg?style=flat-square)](https://coveralls.io/r/dfinity/js-bls-lib)
